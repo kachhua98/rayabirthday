@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #fffafc, #f7f3ff);
+  color: #333;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* COVER */
+.cover {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+}
+
+.cover h2 {
+  margin-top: 8px;
+  font-size: 1.3rem;
+}
+
+.cover button {
+  margin-top: 28px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: #ffb7c5;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+.letter p {
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.closing {
+  margin-top: 28px;
+  font-weight: 500;
+}
+
+.signature {
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Otter image */
+.otter {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.otter img {
+  width: 120px;
+}
+
+/* Gallery */
+.gallery {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* Video */
+.video {
+  margin-top: 40px;
+}
+
+.video video {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 💗 FLOATING HEARTS — MOBILE SAFE */
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 22px;
+  animation: floatHeart 6s linear forwards;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 50;
+}
+
+@keyframes floatHeart {
+  from {
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* 🦦 OTTER EMOJI — WORKS ON MOBILE */
+.otter-emoji {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 64px;
+  animation: otterPop 3.5s ease forwards;
+  z-index: 60;
+  pointer-events: none;
+}
+
+@keyframes otterPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -70%) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Desktop tweaks */
+@media (min-width: 900px) {
+  .cover h1 {
+    font-size: 2.6rem;
+  }
+}
