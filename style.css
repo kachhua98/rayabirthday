@@ -16,11 +16,17 @@ body {
 .cover {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
+}
+
+.cover-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.2s ease forwards;
 }
 
 .cover h1 {
@@ -33,6 +39,18 @@ body {
   font-size: 1.3rem;
 }
 
+.soft-emoji {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  animation: floatSoft 4s ease-in-out infinite;
+}
+
+.soft-text {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #777;
+}
+
 .cover button {
   margin-top: 28px;
   padding: 14px 28px;
@@ -42,6 +60,12 @@ body {
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
 
 /* CONTENT */
@@ -71,7 +95,7 @@ body {
   font-style: italic;
 }
 
-/* Otter image */
+/* Otter image inside content */
 .otter {
   display: flex;
   justify-content: center;
@@ -82,48 +106,44 @@ body {
   width: 120px;
 }
 
-/* Gallery */
+/* 💕 GALLERY GRID */
 .gallery {
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 14px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 183, 197, 0.35);
+  transition: transform 0.3s ease;
 }
 
-/* Video */
+.gallery img:active {
+  transform: scale(0.96);
+}
+
+/* VIDEO */
 .video {
   margin-top: 40px;
 }
 
 .video video {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 16px;
 }
 
-/* Fade animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 💗 FLOATING HEARTS — MOBILE SAFE */
+/* 💗 FLOATING HEARTS */
 .floating-heart {
   position: absolute;
   bottom: -40px;
   font-size: 22px;
   animation: floatHeart 6s linear forwards;
-  opacity: 0.9;
   pointer-events: none;
   z-index: 50;
 }
@@ -139,15 +159,15 @@ body {
   }
 }
 
-/* 🦦 OTTER EMOJI — WORKS ON MOBILE */
+/* 🦦 OTTER INTRO */
 .otter-emoji {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   font-size: 64px;
-  animation: otterPop 3.5s ease forwards;
-  z-index: 60;
+  animation: otterPop 4.5s ease forwards;
+  z-index: 100;
   pointer-events: none;
 }
 
@@ -156,7 +176,7 @@ body {
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
   }
-  25% {
+  20% {
     transform: translate(-50%, -50%) scale(1.2);
     opacity: 1;
   }
@@ -170,9 +190,64 @@ body {
   }
 }
 
-/* Desktop tweaks */
+/* 🌸 FULLSCREEN GALLERY (LIGHTBOX) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 250, 252, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+/* Romantic frame */
+.lightbox-frame {
+  padding: 18px;
+  border-radius: 26px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #ffb7c5, #e7d9ff) border-box;
+  border: 4px solid transparent;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.lightbox-frame img {
+  max-width: 85vw;
+  max-height: 80vh;
+  border-radius: 18px;
+}
+
+.moments{
+    text-align: center;
+    color: palevioletred;
+    background-color: pink;
+}
+
+/* Desktop */
 @media (min-width: 900px) {
   .cover h1 {
     font-size: 2.6rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
